@@ -14,12 +14,15 @@ export interface TodoContextType extends TodoState {
 // create context
 export const TodoContext = createContext<TodoContextType>({
   todos: [],
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   addTodo: (title: string) => {
     // do nothing;
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   deleteTodo: (id: string) => {
     // do nothing;
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   updateTodo: (todo: Todo) => {
     // do nothing;
   },
