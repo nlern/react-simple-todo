@@ -27,6 +27,12 @@ export const TodoReducer = (
         ),
       };
     }
+    case TodoActionTypes.UPDATE_TODOS_FILTER: {
+      return {
+        ...state,
+        filter: action.filter,
+      };
+    }
     default:
       return state;
   }

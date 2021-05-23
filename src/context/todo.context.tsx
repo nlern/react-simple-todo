@@ -1,5 +1,5 @@
 import React, { createContext, FC, useContext, useReducer } from 'react';
-import { Todo, TodoState } from '../interfaces';
+import { Todo, TodoFilterType, TodoState } from '../interfaces';
 import { generateUUID } from '../utils/uuid';
 import { TodoActionTypes } from './todo-action-types.enum';
 import { TodoReducer } from './todo.reducer';
@@ -9,11 +9,17 @@ export interface TodoContextType extends TodoState {
   addTodo: (title: string) => void;
   deleteTodo: (id: string) => void;
   updateTodo: (todo: Todo) => void;
+  updateTodosFilter: (newFilter: TodoFilterType) => void;
 }
+
+const initialState: TodoState = {
+  todos: [],
+  filter: 'all',
+};
 
 // create context
 export const TodoContext = createContext<TodoContextType>({
-  todos: [],
+  ...initialState,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   addTodo: (title: string) => {
     // do nothing;
@@ -26,16 +32,16 @@ export const TodoContext = createContext<TodoContextType>({
   updateTodo: (todo: Todo) => {
     // do nothing;
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  updateTodosFilter: (ewFilter: TodoFilterType) => {
+    // do nothing;
+  },
 });
 
 export const useTodo = (): TodoContextType => useContext(TodoContext);
 
 export const TodoProvider: FC = ({ children }): JSX.Element => {
-  const initialState: TodoState = {
-    todos: [],
-  };
-
-  const [{ todos }, dispatch] = useReducer(TodoReducer, initialState);
+  const [{ todos, filter }, dispatch] = useReducer(TodoReducer, initialState);
 
   const addTodo = (title: string): void => {
     const id = generateUUID();
@@ -51,8 +57,20 @@ export const TodoProvider: FC = ({ children }): JSX.Element => {
   const updateTodo = (todo: Todo): void => {
     dispatch({ type: TodoActionTypes.UPDATE_TODO, todo });
   };
+  const updateTodosFilter = (newFilter: TodoFilterType): void => {
+    dispatch({ type: TodoActionTypes.UPDATE_TODOS_FILTER, filter: newFilter });
+  };
   return (
-    <TodoContext.Provider value={{ todos, addTodo, deleteTodo, updateTodo }}>
+    <TodoContext.Provider
+      value={{
+        todos,
+        filter,
+        addTodo,
+        deleteTodo,
+        updateTodo,
+        updateTodosFilter,
+      }}
+    >
       {children}
     </TodoContext.Provider>
   );
