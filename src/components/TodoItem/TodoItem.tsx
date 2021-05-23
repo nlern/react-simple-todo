@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTodo } from '../../context/todo.context';
 import { Todo } from '../../interfaces';
 
 import TodoStyles from './TodoItem.module.css';
@@ -8,7 +9,19 @@ interface TodoProps {
 }
 
 export default function TodoItem({ todo }: TodoProps): JSX.Element {
+  const { updateTodo } = useTodo();
   const { id, title, isDone } = todo;
+
+  const handleTodoToggle = () => {
+    // toggle done state
+    const toggledDone = !isDone;
+    const updatedTodo: Todo = {
+      ...todo,
+      isDone: toggledDone,
+    };
+    updateTodo(updatedTodo);
+  };
+
   return (
     <div className={TodoStyles.todoItemWrapper}>
       <div className={TodoStyles.todoItemCheckboxWrapper}>
@@ -17,6 +30,7 @@ export default function TodoItem({ todo }: TodoProps): JSX.Element {
           id={id}
           className={TodoStyles.todoItemCheckbox}
           checked={isDone}
+          onChange={handleTodoToggle}
         />
       </div>
       <div
