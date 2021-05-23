@@ -1,5 +1,8 @@
 .addTodoFormWrapper {
   padding: 0.5rem;
+}
+
+.addTodoForm {
   display: flex;
   flex-direction: row;
 }

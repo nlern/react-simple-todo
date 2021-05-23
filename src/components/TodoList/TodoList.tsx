@@ -1,16 +1,10 @@
-import React from 'react';
-
-import { Todo } from '../../interfaces';
-
+import React, { useContext } from 'react';
+import { TodoContext } from '../../context/todo.context';
 import TodoItem from '../TodoItem/TodoItem';
-
 import TodoListStyles from './TodoList.module.css';
 
-interface TodoListProps {
-  todos: Todo[];
-}
-
-export default function TodoList({ todos }: TodoListProps): JSX.Element {
+export default function TodoList(): JSX.Element {
+  const { todos } = useContext(TodoContext);
   return (
     <div className={TodoListStyles.todoListWrapper}>
       <ul className={TodoListStyles.todoList}>
