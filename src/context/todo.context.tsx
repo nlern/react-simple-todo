@@ -1,4 +1,4 @@
-import React, { createContext, FC, useReducer } from 'react';
+import React, { createContext, FC, useContext, useReducer } from 'react';
 import { Todo, TodoState } from '../interfaces';
 import { generateUUID } from '../utils/uuid';
 import { TodoActionTypes } from './todo-action-types.enum';
@@ -24,6 +24,8 @@ export const TodoContext = createContext<TodoContextType>({
     // do nothing;
   },
 });
+
+export const useTodo = (): TodoContextType => useContext(TodoContext);
 
 export const TodoProvider: FC = ({ children }): JSX.Element => {
   const initialState: TodoState = {

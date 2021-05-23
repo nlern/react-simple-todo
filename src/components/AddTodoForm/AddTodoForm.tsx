@@ -1,9 +1,11 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { useTodo } from '../../context/todo.context';
 
 import AddTodoFormStyles from './AddTodoForm.module.css';
 
 export default function AddTodoForm(): JSX.Element {
   const [title, setTitle] = useState('');
+  const { addTodo } = useTodo();
 
   const resetForm = () => {
     setTitle('');
@@ -15,10 +17,13 @@ export default function AddTodoForm(): JSX.Element {
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    // TODO: Submit data
+
+    // do not add empty todos.
     if (!title) {
       return;
     }
+    // add valid todo
+    addTodo(title);
     // reset form
     resetForm();
   };
@@ -27,6 +32,7 @@ export default function AddTodoForm(): JSX.Element {
     <div className={AddTodoFormStyles.addTodoFormWrapper}>
       <form className={AddTodoFormStyles.addTodoForm} onSubmit={handleSubmit}>
         <input
+          autoComplete="off"
           type="text"
           id="add-todo-form-input"
           placeholder="Add a todo"
