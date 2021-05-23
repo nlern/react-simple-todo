@@ -1,0 +1,21 @@
+.form {
+  display: flex;
+  flex-direction: row;
+}
+
+.form > .formText {
+  margin-right: 0.5rem;
+}
+
+.form > .formItem {
+  margin-right: 0.5rem;
+  color: #2765eb;
+}
+
+.form > .formItem:last-of-type {
+  margin-right: 0;
+}
+
+.form > .formItem input {
+  margin-right: 0.3rem;
+}

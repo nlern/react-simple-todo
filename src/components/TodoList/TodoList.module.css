@@ -3,7 +3,23 @@
   margin: 0.5rem 0;
 }
 
-.todoList {
+.todoListWrapper > .todoActionsWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #5f5f63;
+}
+
+
+.todoListWrapper > .todoActionsWrapper > .todoCountWrapper > .todoCount {
+  font-weight: 700;
+  color: #2765eb;
+}
+
+.todoListWrapper > .todoList {
   display: flex;
   flex-direction: column;
   list-style-type: none;
@@ -11,6 +27,6 @@
   padding: 0;
 }
 
-.todoList .todoListItem {
+.todoListWrapper > .todoList > .todoListItem {
   margin-bottom: 0.5rem;
 }
