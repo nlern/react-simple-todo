@@ -1,8 +1,14 @@
+.todoListWrapper {
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
 .todoList {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .todoList .todoListItem {

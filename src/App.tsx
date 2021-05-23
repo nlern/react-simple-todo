@@ -1,6 +1,9 @@
 import React from 'react';
+import AddTodoForm from './components/AddTodoForm/AddTodoForm';
 import TodoList from './components/TodoList/TodoList';
 import { Todo } from './interfaces';
+
+import './index.css';
 
 function App(): JSX.Element {
   const todos: Todo[] = [
@@ -16,9 +19,10 @@ function App(): JSX.Element {
     },
   ];
   return (
-    <>
+    <div className="App">
+      <AddTodoForm />
       <TodoList todos={todos} />
-    </>
+    </div>
   );
 }
 

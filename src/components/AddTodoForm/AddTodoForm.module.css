@@ -1,0 +1,13 @@
+.addTodoFormWrapper {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.addTodoFormInput {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border: 0.1rem solid #aaa;
+  border-radius: 0.5rem;
+}
