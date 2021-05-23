@@ -9,7 +9,7 @@ interface TodoProps {
 }
 
 export default function TodoItem({ todo }: TodoProps): JSX.Element {
-  const { updateTodo } = useTodo();
+  const { updateTodo, deleteTodo } = useTodo();
   const { id, title, isDone } = todo;
 
   const handleTodoToggle = () => {
@@ -20,6 +20,10 @@ export default function TodoItem({ todo }: TodoProps): JSX.Element {
       isDone: toggledDone,
     };
     updateTodo(updatedTodo);
+  };
+
+  const handleTodoDelete = () => {
+    deleteTodo(id);
   };
 
   return (
@@ -33,12 +37,23 @@ export default function TodoItem({ todo }: TodoProps): JSX.Element {
           onChange={handleTodoToggle}
         />
       </div>
-      <div
-        className={`${TodoStyles.todoItemTitle} ${
-          isDone ? TodoStyles.done : ''
-        }`}
-      >
-        {title}
+      <div className={TodoStyles.todoItemTitleWrapper}>
+        <h1
+          className={`${TodoStyles.todoItemTitle} ${
+            isDone ? TodoStyles.done : ''
+          }`}
+        >
+          {title}
+        </h1>
+        <div className={TodoStyles.todoItemDeleteWrapper}>
+          <button
+            className={TodoStyles.todoItemDeleteButton}
+            type="button"
+            onClick={handleTodoDelete}
+          >
+            X
+          </button>
+        </div>
       </div>
     </div>
   );
