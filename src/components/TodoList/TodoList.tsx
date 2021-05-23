@@ -16,6 +16,9 @@ export default function TodoList(): JSX.Element {
           );
         })}
       </ul>
+      {todos && Array.isArray(todos) && todos.length > 0 ? (
+        <div>Count: {todos.length}</div>
+      ) : null}
     </div>
   );
 }
