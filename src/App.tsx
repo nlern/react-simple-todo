@@ -1,25 +1,21 @@
-import React from 'react';
-import TodoList from './components/TodoList/TodoList';
-import { Todo } from './interfaces';
+import React, { FC } from 'react';
 
-function App(): JSX.Element {
-  const todos: Todo[] = [
-    {
-      id: '1',
-      title: 'Learn React',
-      isDone: true,
-    },
-    {
-      id: '2',
-      title: 'Learn GraphQL',
-      isDone: false,
-    },
-  ];
+import AddTodoForm from './components/AddTodoForm/AddTodoForm';
+import TodoList from './components/TodoList/TodoList';
+
+import { TodoProvider } from './context/todo.context';
+
+import './index.css';
+
+const App: FC = (): JSX.Element => {
   return (
-    <>
-      <TodoList todos={todos} />
-    </>
+    <TodoProvider>
+      <div className="App">
+        <AddTodoForm />
+        <TodoList />
+      </div>
+    </TodoProvider>
   );
-}
+};
 
 export default App;
