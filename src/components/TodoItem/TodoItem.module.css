@@ -1,0 +1,19 @@
+.todoItemWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+}
+
+.todoItemWrapper .todoItemCheckboxWrapper {
+  margin-right: 1rem;
+}
+
+.todoItemWrapper .todoItemTitle {
+  flex: 1;
+}
+
+.todoItemWrapper .todoItemTitle.done {
+  font-style: italic;
+  text-decoration: line-through;
+}
